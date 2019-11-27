@@ -1,54 +1,53 @@
 // 抽象类
 abstract class Animal {
-    abstract makeSound(): void
+  abstract makeSound(): void
 
-    move(): void {
-        console.log('move')
-    }
+  move(): void {
+    console.log('move')
+  }
 }
 
 abstract class Department {
-    name: string
-    constructor(name: string) {
-        this.name = name
-    }
+  name: string
+  constructor(name: string) {
+    this.name = name
+  }
 
-    printName():void {
-        console.log('Department name is :' + this.name)
-    }
+  printName(): void {
+    console.log('Department name is :' + this.name)
+  }
 
-    abstract sendMessage(): void
+  abstract sendMessage(): void
 }
 
 class AccountingDepartment extends Department {
-    constructor() {
-        super('Zoro')
-    }
+  constructor() {
+    super('Zoro')
+  }
 
-    sendMessage(): void {
-        console.log('test send')
-    }
+  sendMessage(): void {
+    console.log('test send')
+  }
 }
 
 let department: Department = new AccountingDepartment()
 
-
 class Greeter {
-    static msg = 'hello, boy'
+  static msg = 'hello, boy'
 
-    greeting: string | void
+  greeting: string | void
 
-    constructor(message?: string) {
-        this.greeting = message
+  constructor(message?: string) {
+    this.greeting = message
+  }
+
+  greet(): string {
+    if (this.greeting) {
+      return 'hello' + this.greeting
+    } else {
+      return Greeter.msg
     }
-
-    greet(): string {
-        if (this.greeting) {
-            return 'hello' + this.greeting
-        } else {
-            return Greeter.msg
-        }
-    }
+  }
 }
 
 let myGreet: Greeter = new Greeter('world')

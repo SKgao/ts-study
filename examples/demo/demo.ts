@@ -1,27 +1,27 @@
 interface Person {
-    firstName: string
-    lastName: string
+  firstName: string
+  lastName: string
 }
 
 class User {
-    fullName: string
-    firstName: string
-    lastName: string
+  fullName: string
+  firstName: string
+  lastName: string
 
-    constructor(firstName: string, lastName: string) {
-        this.firstName = firstName
-        this.lastName = lastName
-        this.fullName = firstName + ' ' + lastName
-    }
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName
+    this.lastName = lastName
+    this.fullName = firstName + ' ' + lastName
+  }
 }
 
 function hello(person: Person) {
-    return 'hello ' + person.firstName + person.lastName
+  return 'hello ' + person.firstName + person.lastName
 }
 
 let user: Person = {
-    firstName: 'G',
-    lastName: 'sk'
+  firstName: 'G',
+  lastName: 'sk'
 }
 console.log(hello(user))
 
