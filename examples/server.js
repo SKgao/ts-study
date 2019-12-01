@@ -128,11 +128,22 @@ function registerInterceptorRouter() {
   })
 }
 
+function registerConfigRouter() {
+  router.get('/config/get', function(req, res) {
+    res.end('hello')
+  })
+
+  router.post('/config/post', function(req, res) {
+    res.json(req.body)
+  })
+}
+
 registerSimpleRouter()
 registerBaseRouter()
 registerErrorRouter()
 registerExtendRouter()
 registerInterceptorRouter()
+registerConfigRouter()
 
 app.use(router)
 
