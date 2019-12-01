@@ -67,13 +67,18 @@ axios({
   data: {
     a: '11',
     b: '22'
-  }
+  },
+  responseType: 'json'
+}).then((res) => {
+  console.log(res)
 })
 
 axios({
   method: 'post',
   url: '/base/buffer',
   data: new Int32Array([21, 31])
+}).then((res) => {
+  console.log(res)
 })
 
 axios({
@@ -87,6 +92,8 @@ axios({
     a: '111',
     b: '222'
   }
+}).then((res) => {
+  console.log(res)
 })
 
 const paramsString = 'q=URLUtils&topic=qpi'
@@ -94,4 +101,6 @@ axios({
   method: 'post',
   url: '/base/post',
   data: new URLSearchParams(paramsString)
+}).then((res) => {
+  console.log(res)
 })
