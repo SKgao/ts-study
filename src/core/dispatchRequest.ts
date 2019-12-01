@@ -1,8 +1,8 @@
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from '../types'
-import { buildUrl } from '../helpers/url'
-import { transformRequest, transformResponse } from '../helpers/data'
-import { processHeaders, flattenHeaders } from '../helpers/headers'
 import xhr from './xhr'
+import { buildUrl } from '../helpers/url'
+import { flattenHeaders } from '../helpers/headers'
+import { transform } from './transform'
 
 function dispatchRequest(config: AxiosRequestConfig): AxiosPromise {
   processConfig(config)
@@ -13,8 +13,7 @@ function dispatchRequest(config: AxiosRequestConfig): AxiosPromise {
 
 function processConfig(config: AxiosRequestConfig): void {
   config.url = transformUrl(config)
-  config.headers = transformHeaders(config)
-  config.data = transformRequestData(config)
+  config.data = transform(config.data, config.headers, config.transformRequest)
   config.headers = flattenHeaders(config.headers, config.method!)
 }
 
@@ -23,18 +22,8 @@ function transformUrl(config: AxiosRequestConfig): string {
   return buildUrl(url!, params)
 }
 
-function transformRequestData(config: AxiosRequestConfig): any {
-  return transformRequest(config.data)
-}
-
-function transformHeaders(config: AxiosRequestConfig): any {
-  const { headers = {}, data } = config
-  return processHeaders(headers, data)
-}
-
 function transformResponseData(res: AxiosResponse): AxiosResponse {
-  const { data } = res
-  res.data = transformResponse(data)
+  res.data = transform(res.data, res.headers, res.config.transformResponse)
   return res
 }
 
