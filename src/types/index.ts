@@ -28,6 +28,10 @@ export interface AxiosRequestConfig {
   withCredentials?: boolean
   xsrfCookieName?: string
   xsrfHeaderName?: string
+  onDownloadProgress?: (e: ProgressEvent) => void
+  onUploadProgress?: (e: ProgressEvent) => void
+  auth?: AxiosBasicCredentials
+  validateStatus?: (status: number) => boolean
   // 其他属性
   [propName: string]: any
 }
@@ -147,4 +151,10 @@ export interface Cancel {
 // Cancel类--类类型
 export interface CancelStatic {
   new (message?: string): Cancel
+}
+
+// Auth对象
+export interface AxiosBasicCredentials {
+  username: string
+  password: string
 }
