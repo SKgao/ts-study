@@ -4,7 +4,6 @@ import { createError } from '../helpers/error'
 import { isURLSameOrigin } from '../helpers/url'
 import { isFormData } from '../helpers/util'
 import cookie from '../helpers/cookie'
-import { head } from '_@types_shelljs@0.8.6@@types/shelljs'
 
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
